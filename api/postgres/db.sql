@@ -21,12 +21,6 @@ VALUES (default,'Lapis',3.14),
        (default,'Notebook',2000),
        (default,'Geladeira', 5000);
 
-CREATE TABLE carrinhos
-(
-    id SERIAL  NOT NULL PRIMARY KEY,
-    idProduto integer NOT NULL,
-    dataCarrinho date NOT NULL   
-);
 
 CREATE TABLE compra
 (
