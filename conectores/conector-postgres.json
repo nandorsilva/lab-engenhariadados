@@ -1,0 +1,17 @@
+{
+        "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+        "tasks.max": "1",
+        "database.hostname": "postgres",
+        "database.port": "5432",
+        "database.user": "",
+        "database.password": "",
+        "database.dbname" : "postgres",
+        "topic.prefix": "postgres",     
+        "table.include.list": "dbfiafastapi.compra,dbfiafastapi.compraitens",
+        "transforms": "unwrap",
+        "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
+        "transforms.unwrap.drop.tombstones": "false",
+        "transforms.unwrap.add.headers": "op",
+        "value.converter.schemas.enable": "false",
+        "database.history.kafka.topic": "schema-changes.inventory"
+}

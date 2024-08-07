@@ -1,0 +1,67 @@
+# Lab Eda - Kafka Connect
+
+
+## Disclaimer
+> **As configurações dos Laboratórios é puramente para fins de desenvolvimento local e estudos**
+
+
+## Pré-requisitos?
+* Docker
+* Docker-Compose
+
+
+
+
+### Iniciando o ambiente para o banco de dados
+
+Na pastinha PostegreSql tem o arquivo para a criação da estrutura inicial do banco. 
+
+Observe o arquivo `Dockerfile` e veja que está sendo copiado o arquivo `db.sql` pra dentro da imagem em sua criação.
+
+Nesse arquivo crie a estrutura da tabela carrinho contendo os seguintes campos:
+
+* id SERIAL  NOT NULL PRIMARY KEY
+* idProduto integer NOT NULL
+* dataCarrinho date NOT NULL   
+
+Após a criação vamos subir os serviços do docker compose... Lembram!?!!?!?
+
+* postgres  
+* pgadmin
+
+
+```bash
+docker-compose up -d postgres  pgadmin 
+```
+
+### Conectando o banco PostgreSql com a ferramenta PgAdmin
+
+
+Acessando para o PgAdmin http://localhost:5433/
+
+
+* Login: lab-pgadmin4@pgadmin.org
+* Senha : postgres    
+
+* Nome do server: postgres
+* Nome do Host Name: postgres
+* database: postgres
+* Username: postgres
+* password: postgres
+
+### Tela de login do PgAdmin
+![Exemplo Kafka Conect](../content/login-pgadmin.png)
+
+
+### Inserindo um server
+![Exemplo Kafka Conect](../content/add-server.png)
+
+### Configurando o server
+![Exemplo Kafka Conect](../content/conect-pgadmin.png)
+
+### ...Se tudo deu certo o banco de exemplo com suas tabelas
+![Exemplo Kafka Conect](../content/tabelas.png)
+
+> [!IMPORTANT]
+> Navegam entre as tabelas, façam alguns selects
+

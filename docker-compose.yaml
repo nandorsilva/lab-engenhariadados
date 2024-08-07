@@ -1,0 +1,215 @@
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements. See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License. You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+version: '2.4'
+services:
+ 
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:${CONFLUENT_VERSION}
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+      ZOOKEEPER_INIT_LIMIT: 5
+      ZOOKEEPER_SYNC_LIMIT: 2
+    ports:
+     - "2181:2181"
+    container_name: zookeeper
+    networks:
+      otel:
+
+  kafka-broker:
+    image: confluentinc/cp-kafka:${CONFLUENT_VERSION}
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+      - "9991:9991"
+
+    container_name: kafka-broker
+    environment:
+      KAFKA_BROKER_ID: 101
+      KAFKA_JMX_PORT: 9991
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-broker:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      CONFLUENT_METRICS_REPORTER_BOOTSTRAP_SERVERS: kafka-broker:29092
+      CONFLUENT_METRICS_REPORTER_ZOOKEEPER_CONNECT: zookeeper:2181
+      CONFLUENT_METRICS_REPORTER_TOPIC_REPLICAS: 1
+      CONFLUENT_METRICS_ENABLE: 'false'
+      KAFKA_HEAP_OPTS: ${KAFKA_BROKER_HEAP_OPTS}
+    mem_limit: ${KAFKA_BROKER_MEM_LIMIT}
+    networks:
+      otel:
+
+
+  akhq:
+    image: tchiotludo/akhq:${AKHQ_VERSION}
+    container_name: akhq
+    environment:
+      AKHQ_CONFIGURATION: |
+        akhq:
+          connections:
+            docker-kafka-server:
+              properties:
+                bootstrap.servers: "kafka-broker:29092"       
+              connect:
+                - name: "connect"
+                  url: "http://connect:8083"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - kafka-broker    
+      - connect
+    networks:
+      otel:
+
+  
+  connect:
+        image: fernandos/kafka-connet-debezium-lab:v214
+        container_name: kafkaConect
+        ports:
+        - 8083:8083
+        depends_on:      
+         - kafka-broker      
+        environment:
+        - KAFKA_LOG4J_OPTS=-Dlog4j.configuration=file:/opt/kafka/config/connect-log4j.properties
+        - KAFKA_CONNECT_BOOTSTRAP_SERVERS=kafka-broker:29092
+        - |
+            KAFKA_CONNECT_CONFIGURATION=
+            key.converter=org.apache.kafka.connect.json.JsonConverter
+            value.converter=org.apache.kafka.connect.json.JsonConverter
+            key.converter.schemas.enable=false
+            value.converter.schemas.enable=false
+            group.id=connect
+            offset.storage.topic=connect-offsets
+            offset.storage.replication.factor=1
+            config.storage.topic=connect-configs
+            config.storage.replication.factor=1
+            status.storage.topic=connect-status
+            status.storage.replication.factor=1  
+            CONNECT_REST_ADVERTISED_HOST_NAME: 'connect'  
+            producer.interceptor.classes=io.debezium.tracing.DebeziumTracingProducerInterceptor  
+       
+        command: /opt/kafka/kafka_connect_run.sh
+        networks:
+          otel:
+
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: lab-pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: postgres    
+    ports:
+      - "5433:80"
+    depends_on:
+      - postgres    
+    networks:
+      otel:
+
+  
+
+  minio:
+    image:  quay.io/minio/minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_storage:/data
+    environment:
+      MINIO_ROOT_USER: admin
+      MINIO_ROOT_PASSWORD: minioadmin
+      MINIO_ACCESS_KEY: cursolab
+      MINIO_SECRET_KEY: cursolab
+    command: server --console-address ":9001" /data
+    networks:
+      otel:
+
+  ksqldb-server:
+    image: confluentinc/cp-ksqldb-server:${KSQLDB_VER}
+    hostname: ksqldb-server
+    container_name: ksqldb-server
+    depends_on:
+      - kafka-broker        
+    ports:
+      - "8088:8088"
+    environment:
+      KSQL_LISTENERS: http://0.0.0.0:8088
+      KSQL_BOOTSTRAP_SERVERS: kafka-broker:29092      
+      KSQL_KSQL_LOGGING_PROCESSING_STREAM_AUTO_CREATE: "true"
+      KSQL_KSQL_LOGGING_PROCESSING_TOPIC_AUTO_CREATE: "true"
+      KSQL_CONFLUENT_SUPPORT_METRICS_ENABLE: "false"        
+
+    networks:
+      otel: 
+ 
+  ksqldb-cli:
+    image: confluentinc/cp-ksqldb-cli:${KSQLDB_VER}
+    container_name: ksqldb-cli
+    depends_on:
+      - kafka-broker
+      - ksqldb-server
+    volumes:
+      - ./scripts:/scripts
+    entrypoint: /bin/sh
+    tty: true
+    networks:
+      otel:
+  
+  postgres: 
+    image: fia_postgres_alpine18
+    container_name: postgres
+    build:
+      context: ./api/postgres
+      dockerfile: Dockerfile
+    ports:   
+      - "5435:5432"
+    environment:   
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    networks:
+      otel:
+  api:
+      image: fia_fastapi
+      build:
+        context: .      
+        dockerfile: api/Dockerfile
+      ports:
+        - "8000:8000"   
+      container_name:  fast-api-fia 
+      volumes:
+        - ./api:/home/app/api   
+      environment:
+        - DATABASE_URL=postgresql+asyncpg://postgres:postgres@postgres:5432/dbfiafastapi
+      stdin_open: true
+      tty: true 
+      networks:
+       otel:
+
+
+
+networks:
+  otel:
+
+volumes:
+  minio_storage: {}
+  loki:
+  prometheus:
+  tempo:
+  grafana-data:
