@@ -33,7 +33,7 @@ Sistema de E-commerce da Modas Consultorias: Exibe os produtos adicionados ao ca
 ![Lab](content/lab.png)
 
 
-1. [Estrutura banco de dados](postgres/README.md)
+1. [Estrutura banco de dados](postgresql/README.md)
 2. [Subindo Kafka](kafka/README.md)
 3. [Criando os primeiros conectores - Source](conectores/README.md)
 4. [Tópico Produto](topico-produto//README.md)
