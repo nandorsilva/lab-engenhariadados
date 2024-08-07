@@ -65,3 +65,10 @@ Acessando para o PgAdmin http://localhost:5433/
 > [!IMPORTANT]
 > Navegam entre as tabelas, façam alguns selects
 
+
+
+2. [Subindo Kafka](kafka/README.md)
+3. [Criando os primeiros conectores - Source](conectores/README.md)
+4. [Tópico Produto](topico-produto//README.md)
+5. [Criando nossa primeira transformação com KSql](transformacao-ksql/README.md)
+6. [Criando ambiente MinIO e os Conectores Sink ](minio/README.md)

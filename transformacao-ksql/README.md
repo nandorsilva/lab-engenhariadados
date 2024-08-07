@@ -34,3 +34,5 @@ from compraitens_stream ci
 left join produtosTable p on ci.idproduto = p.id  emit changes;
  
 ```
+
+6. [Criando ambiente MinIO e os Conectores Sink ](minio/README.md)

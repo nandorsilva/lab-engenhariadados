@@ -1,5 +1,3 @@
-# LAB Fast API
----
 ## Disclaimer
 > **Esta configuração é puramente para fins de desenvolvimento local e estudos**
 > 

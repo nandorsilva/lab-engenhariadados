@@ -53,3 +53,8 @@ Insira alguns registros
 ```sql
 INSERT INTO produtos VALUES (default,'nome do produto',3.14);
 ```	
+
+
+
+5. [Criando nossa primeira transformação com KSql](transformacao-ksql/README.md)
+6. [Criando ambiente MinIO e os Conectores Sink ](minio/README.md)
