@@ -33,9 +33,9 @@ Sistema de E-commerce da Modas Consultorias: Exibe os produtos adicionados ao ca
 ![Lab](content/lab.png)
 
 
-* 1. [Estrutura banco de dados](postgres/README.md)
-* 2. [Subindo Kafka](kafka/README.md)
-* 3. [Criando os primeiros conectores - Source](conectores/README.md)
-* 4. [Tópico Produto](topico-produto//README.md)
-* 5. [Criando nossa primeira transformação com KSql](transformacao-ksql/README.md)
-* 6. [Criando ambiente MinIO e os Conectores Sink ](minio/README.md)
+1. [Estrutura banco de dados](postgres/README.md)
+2. [Subindo Kafka](kafka/README.md)
+3. [Criando os primeiros conectores - Source](conectores/README.md)
+4. [Tópico Produto](topico-produto//README.md)
+5. [Criando nossa primeira transformação com KSql](transformacao-ksql/README.md)
+6. [Criando ambiente MinIO e os Conectores Sink ](minio/README.md)
