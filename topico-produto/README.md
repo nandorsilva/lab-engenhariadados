@@ -27,19 +27,30 @@ kafka-topics --bootstrap-server localhost:9092 --list
 
 ### Vamos criar conector para ler os dados da tabela Produto e produzir no kafka
 
+No arquivo `conectores/conector-postgres-produto.json` ajuste o atributo `table.include.list` para informar o nome da tabela do postegreSQL que será feito a leitura dos dodos
+
+
+
 ```bash
 
-http PUT http://localhost:8083/connectors/connector-postgres-produtos/config < conector-postgres-produto.json
+exit
+http PUT http://localhost:8083/connectors/connector-postgres-produtos/config < conectores/conector-postgres-produto.json
 	
 
 //Ou via powershell
 $response = Invoke-WebRequest -Uri "http://localhost:8083/connectors/connector-postgres-produtos/config" -Method Put -Body (Get-Content -Path "connector-postgres-produtos.json" -Raw) -ContentType "application/json"; $response.Content
+
+
+http  http://localhost:8083/connectors/connector-postgres-produtos/status
 
 ```
 
 Deu certo?? Vamos consumir as mensagem da tabela protudo
 
 ```bash
+
+docker exec -it kafka-broker /bin/bash
+
 kafka-topics --bootstrap-server localhost:9092 --list 
 
 kafka-console-consumer --bootstrap-server localhost:9092 --topic postgres.dbfiafastapi.produtos --property print.timestamp=true --property print.key=true --property print.value=true --property print.partition=true --from-beginning
@@ -53,7 +64,7 @@ Insira alguns registros
 
 
 ```sql
-INSERT INTO produtos VALUES (default,'nome do produto',3.14);
+INSERT INTO dbfiafastapi.produtos VALUES (default,'nome do produto',3.14);
 ```	
 
 

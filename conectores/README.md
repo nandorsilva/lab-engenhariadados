@@ -20,10 +20,10 @@ No arquivo `conector-postgres.json` onde está o conector está faltando os dado
 
 ```bash
 
-http PUT http://localhost:8083/connectors/connector-postgres/config < conector-postgres.json
+http PUT http://localhost:8083/connectors/connector-postgres/config < conectores/conector-postgres.json
 
 //Ou via powershell
-$response = Invoke-WebRequest -Uri "http://localhost:8083/connectors/connector-postgres/config" -Method Put -Body (Get-Content -Path "conector-postgres.json" -Raw) -ContentType "application/json"; $response.Content
+$response = Invoke-WebRequest -Uri "http://localhost:8083/connectors/connector-postgres/config" -Method Put -Body (Get-Content -Path "conectores/conector-postgres.json" -Raw) -ContentType "application/json"; $response.Content
 
 
 ```
@@ -31,13 +31,14 @@ $response = Invoke-WebRequest -Uri "http://localhost:8083/connectors/connector-p
 ### Deu certo?
 
 ```bash
-	docker exec -it kafkaConect curl http://localhost:8083/connectors/connector-postgres-produtos/status
+	docker exec -it kafkaConect curl http://localhost:8083/connectors/connector-postgres/status
 ```
 
 Insira alguns registros
 
 > [!IMPORTANT]
-> Na tabela `compraitens` insira produtos que já possuem na tabela `produtos`
+> Na tabela `compraitens` insira registros.
+> Os produtos - campo idproduto precisam ter na tabela  `produtos`
 
 
 ```sql
