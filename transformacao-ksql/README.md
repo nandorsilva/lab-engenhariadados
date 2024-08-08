@@ -54,3 +54,4 @@ kafka-console-consumer --bootstrap-server localhost:9092 --topic COMPRASITEMPROD
 
 
 6. [Criando ambiente MinIO e os Conectores Sink ](../minio/README.md)
+7. [Criando APi, gerando evento para o carrinho ](../api/README.md)

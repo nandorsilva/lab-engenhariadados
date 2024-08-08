@@ -81,3 +81,5 @@ Criando o conector `conector-minio-COMPRASITEMPRODUTO.json`
 
 
 ## AGORA É COM VOCÊ!
+
+7. [Criando APi, gerando evento para o carrinho ](../api/README.md)
