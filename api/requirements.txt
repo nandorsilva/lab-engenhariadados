@@ -7,3 +7,6 @@ uvicorn==0.22.0
 # dev
 pytest          # execução de testes
 httpx
+
+
+confluent-kafka

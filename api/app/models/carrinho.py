@@ -4,13 +4,14 @@ from datetime import date
 
 
 class CarrinhoBase(SQLModel):
-    idProduto: int
-    dataCarrinho: date
-    quantidade:int
+    idproduto: int
+    datacarrinho: date
+    # quantidade:int
 
 
 class Carrinho(CarrinhoBase, table=True):
     __tablename__: str = 'carrinhos'  
+    __table_args__ = {'schema': 'dbfiafastapi'}
     id: int = Field(default=None, primary_key=True)
 
 class CarrinhoRequest(CarrinhoBase):
@@ -18,6 +19,7 @@ class CarrinhoRequest(CarrinhoBase):
 
 class CarrinhoResponse(SQLModel):
   id: int
-  idProduto:int
+  idproduto:int
+  datacarrinho:date
  
 

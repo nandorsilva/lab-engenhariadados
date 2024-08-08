@@ -188,15 +188,16 @@ services:
   api:
       image: fia_fastapi
       build:
-        context: .      
-        dockerfile: api/Dockerfile
+        context: ./api     
+        dockerfile: Dockerfile
       ports:
         - "8000:8000"   
       container_name:  fast-api-fia 
       volumes:
         - ./api:/home/app/api   
       environment:
-        - DATABASE_URL=postgresql+asyncpg://postgres:postgres@postgres:5432/dbfiafastapi
+        - DATABASE_URL=postgresql+asyncpg://postgres:postgres@postgres:5432/postgres
+        - BOOSTRAP_SERVER_KAFKA=kafka-broker:29092
       stdin_open: true
       tty: true 
       networks:

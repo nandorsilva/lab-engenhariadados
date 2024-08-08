@@ -9,8 +9,8 @@ WORKDIR $APP_HOME
 
 # install
 COPY . $APP_HOME
-RUN pip install --no-cache-dir --upgrade -r api/requirements.txt
-RUN pip install -e ./api
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
+RUN pip install -e .
 
 
 # 
