@@ -31,6 +31,9 @@ Após a criação vamos subir os serviços do docker compose... Lembram!?!!?!?
 
 ```bash
 docker-compose up -d postgres  pgadmin 
+
+docker container ls
+
 ```
 
 ### Conectando o banco PostgreSql com a ferramenta PgAdmin
