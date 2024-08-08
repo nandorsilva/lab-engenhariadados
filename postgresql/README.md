@@ -69,8 +69,8 @@ Acessando para o PgAdmin http://localhost:5433/
 
 
 
-2. [Subindo Kafka](kafka/README.md)
-3. [Criando os primeiros conectores - Source](conectores/README.md)
-4. [Tópico Produto](topico-produto//README.md)
-5. [Criando nossa primeira transformação com KSql](transformacao-ksql/README.md)
-6. [Criando ambiente MinIO e os Conectores Sink ](minio/README.md)
+2. [Subindo Kafka](../kafka/README.md)
+3. [Criando os primeiros conectores - Source](../conectores/README.md)
+4. [Tópico Produto](../topico-produto//README.md)
+5. [Criando nossa primeira transformação com KSql](../transformacao-ksql/README.md)
+6. [Criando ambiente MinIO e os Conectores Sink ](../minio/README.md)

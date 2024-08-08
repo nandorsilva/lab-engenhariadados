@@ -69,6 +69,6 @@ kafka-console-consumer --bootstrap-server localhost:9092 --topic postgres.dbfiaf
 
 
 
-4. [Tópico Produto](topico-produto//README.md)
-5. [Criando nossa primeira transformação com KSql](transformacao-ksql/README.md)
-6. [Criando ambiente MinIO e os Conectores Sink ](minio/README.md)
+4. [Tópico Produto](../topico-produto//README.md)
+5. [Criando nossa primeira transformação com KSql](../transformacao-ksql/README.md)
+6. [Criando ambiente MinIO e os Conectores Sink ](../minio/README.md)
