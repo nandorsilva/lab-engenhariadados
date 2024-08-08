@@ -176,7 +176,7 @@ services:
     image: fia_postgres_alpine18
     container_name: postgres
     build:
-      context: ./api/postgres
+      context: ./postgresql
       dockerfile: Dockerfile
     ports:   
       - "5435:5432"
