@@ -25,7 +25,7 @@ docker logs  fast-api-fia
 
 ```
 
-# Vamos inserir um carrinho
+# Vamos inserir um registro do carrinho
 
 * http://localhost:8000/docs
 
