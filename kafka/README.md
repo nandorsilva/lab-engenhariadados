@@ -18,6 +18,7 @@ docker-compose up -d zookeeper kafka-broker
 ### Vamos configurar nosso cluster de Kafka Connect ??
 
 ```bash
+cd kafka
 docker image build -t <<usuario>>/kafka-connet-lab:v1  -f Dockerfile .
 ```
 
