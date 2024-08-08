@@ -19,7 +19,7 @@
         "transforms": "ReplaceNulls",
         "transforms.ReplaceNulls.type": "org.apache.kafka.connect.transforms.ReplaceField$Value",
         "transforms.ReplaceNulls.null.replacement": "{}",
-        "aws.access.key.id": "Gio6qKCcBnt4Z0XyQAGk",
-        "aws.secret.access.key": "yJYDVYQmXvhRShjh5MKzaj9HYhm3kVamTeEYApcJ"
+        "aws.access.key.id": "ib0KM2z3R6Nnr7tR3gZ5",
+        "aws.secret.access.key": "7isUhSitpJj9BRkwQpTOvgRIy6td1zR4SJYofAVM"
 
 }

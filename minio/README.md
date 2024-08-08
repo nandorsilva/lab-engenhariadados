@@ -10,6 +10,26 @@
 
 
 
+### Antes de subir o MinIO, vamos criar o tópico carrinho que será produzido via api
+```bash
+
+docker exec -it kafka-broker /bin/bash
+
+kafka-topics --create --topic carrinho --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 
+
+kafka-topics --bootstrap-server localhost:9092 --list 
+```
+
+### Vamos produzir algumas mensagens
+
+```json
+
+kafka-console-producer --bootstrap-server localhost:9092 --topic carrinho
+	
+ {"id": 1, "idproduto": 101, "datacarrinho": "2024-08-01"}
+
+```
+
 ### Subindo o ambiente do MinIO
 
 ```bash
@@ -47,9 +67,15 @@ Instalando o conector do MinIO
 Criando o conector `conector-minio-carrinho.json`
 
 ```bash
-http PUT http://localhost:8083/connectors/conector-minio-carrinho.json/config < conector-minio-carrinho.json.json
+http PUT http://localhost:8083/connectors/conector-minio-carrinho/config < conectores/conector-minio-carrinho.json
+
+
+docker exec -it kafkaConect curl http://localhost:8083/connectors/conector-minio-carrinho/status
 
 ```
+
+## Insrida dados na tabela carrinho
+
 
 Criando o conector `conector-minio-COMPRASITEMPRODUTO.json`
 
