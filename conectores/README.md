@@ -31,7 +31,7 @@ $response = Invoke-WebRequest -Uri "http://localhost:8083/connectors/connector-p
 ### Deu certo?
 
 ```bash
-	docker exec -it kafkaConect curl http://localhost:8083/connectors/connector-postgres/status
+docker exec -it kafkaConect curl http://localhost:8083/connectors/connector-postgres/status
 ```
 
 Insira alguns registros
