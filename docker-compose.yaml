@@ -127,19 +127,62 @@ services:
 
   minio:
     image:  quay.io/minio/minio
+    entrypoint: sh
+    command:   '-c ''mkdir -p /minio_data/raw && mkdir -p /minio_data/trusted && minio server /minio_data --console-address ":9001"'''
     ports:
       - "9000:9000"
       - "9001:9001"
-    volumes:
-      - minio_storage:/data
     environment:
       MINIO_ROOT_USER: admin
       MINIO_ROOT_PASSWORD: minioadmin
       MINIO_ACCESS_KEY: cursolab
       MINIO_SECRET_KEY: cursolab
-    command: server --console-address ":9001" /data
+    volumes:
+      - ./minio/data1:/minio_data
     networks:
       otel:
+      
+      
+  namenode:
+    image: fjardim/mds-namenode
+    container_name: namenode
+    hostname: namenode
+    volumes:
+      - ./hadoop/hdfs/namenode:/hadoop/dfs/name
+      - ./hadoop/util:/util
+    env_file:
+      - ./hadoop/hadoop.env
+    ports:
+      - "9870:9870"
+    deploy:
+      resources:
+        limits:
+          memory: 500m
+    networks:
+       otel:
+
+       
+  datanode:
+    image: fjardim/mds-datanode
+    container_name: datanode
+    hostname: datanode
+    volumes:
+      - ./hadoop/hdfs/datanode:/hadoop/dfs/data
+      - ./hadoop/util:/util
+    env_file:
+      - ./hadoop/hadoop.env
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870"
+    depends_on:
+      - namenode
+    ports:
+      - "9864:9864"
+    deploy:
+      resources:
+        limits:
+          memory: 500m
+    networks:
+       otel:
 
   ksqldb-server:
     image: confluentinc/cp-ksqldb-server:${KSQLDB_VER}
@@ -175,14 +218,21 @@ services:
   postgres: 
     image: fia_postgres_alpine18
     container_name: postgres
+    hostname: postgres
+    
     build:
       context: ./api/postgres
       dockerfile: Dockerfile
     ports:   
       - "5435:5432"
+    volumes:
+      - ./postgresql/volume:/var/lib/postgresql/data
+      - ./util:/util
     environment:   
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=admin
+    command: postgres -c shared_preload_libraries=pg_stat_statements -c pg_stat_statements.track=all -c max_connections=200 -c wal_level=logical
     networks:
       otel:
   api:
@@ -202,6 +252,106 @@ services:
       tty: true 
       networks:
        otel:
+       
+  hive:
+    hostname: hive
+    #image: apache/hive:4.0.0-beta-1
+    image: fjardim/mds-hive
+    container_name: hive
+    environment:
+      AWS_ACCESS_KEY_ID: cursolab
+      AWS_SECRET_ACCESS_KEY: cursolab
+      HIVE_CUSTOM_CONF_DIR: "/hive_custom_conf"
+      SERVICE_NAME: hiveserver2
+      SERVICE_OPTS: "-Dhive.metastore.uris=thrift://metastore:9083" 
+      IS_RESUME: "true"
+      #HIVE_VERSION: "3.1.3"
+    ports:
+       - "10000:10000"
+       - "10002:10002"
+    depends_on:
+      - metastore
+    user: root
+    volumes:
+       - ./hive/conf:/hive_custom_conf
+       - ./util:/util
+    networks:
+       otel:
+          
+  metastore:
+    hostname: metastore
+    image: fjardim/mds-hive-metastore
+    #image: apache/hive:4.0.0-beta-1
+    container_name: metastore
+    environment:
+      AWS_ACCESS_KEY_ID: cursolab
+      AWS_SECRET_ACCESS_KEY: cursolab
+      HIVE_CUSTOM_CONF_DIR: "/hive_custom_conf"
+      SERVICE_NAME: metastore
+      #SERVICE_OPTS: "-Dhive.metastore.uris=thrift://metastore:9083" 
+      IS_RESUME: "true"
+      DB_DRIVER: postgres 
+      SERVICE_OPTS: "-Djavax.jdo.option.ConnectionDriverName=org.postgresql.Driver -Djavax.jdo.option.ConnectionURL=jdbc:postgresql://postgres:5432/metastore -Djavax.jdo.option.ConnectionUserName=admin -Djavax.jdo.option.ConnectionPassword=admin" 
+    ports:
+       - "9083:9083"
+    depends_on:
+        - postgres
+          
+    user: root
+    volumes:
+       - ./hive/meta:/opt/hive/data/warehouse 
+       - ./hive/conf:/hive_custom_conf
+       - ./util:/util
+    networks:
+       otel:
+       
+  presto:
+    platform: linux/amd64
+    image: prestodb/presto
+    hostname: presto
+    container_name: presto
+    volumes: 
+      - ./presto/etc/catalog:/opt/presto-server/etc/catalog/
+      - ./presto/etc/catalog:/opt/presto/etc/catalog/
+      - ./presto/etc/catalog:/etc/catalog/ 
+      - ./presto/etc/hadoop:/hadoop 
+      - ./util:/util
+    ports:
+      - 18080:8080
+    depends_on:
+      - hive
+
+    deploy:
+      resources:
+        limits:
+          memory: 2g
+          #cpus: '0.2'
+    networks:
+       otel:
+       
+  metabase:
+      image: metabase/metabase:latest
+      container_name: metabase
+      hostname: metabase
+      ports:
+        - 3000:3000
+      depends_on:
+        - postgres
+          #condition: service_healthy
+      environment:
+        MB_DB_TYPE: postgres
+        MB_DB_DBNAME: metabase
+        MB_DB_PORT: 5432
+        MB_DB_PASS: admin
+        MB_DB_USER: admin
+        MB_DB_HOST: postgres
+        MB_PASSWORD_COMPLEXITY: "weak"
+        MB_PASSWORD_LENGTH: 4
+        #user userlab@fiadatalab.com.br pass datalab
+      volumes:
+        - ./util:/util
+      networks:
+        otel:
 
 
 networks:
