@@ -112,3 +112,7 @@ docker-compose up -d hive
 docker-compose up -d presto
 ```
 
+
+#### Ir para o Proximo lab:
+
+9. [Criando ambiente Analytics - Criando External tables no Hive](hive/README.md)

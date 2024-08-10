@@ -38,4 +38,7 @@ docker logs  fast-api-fia
 ```bash 
 kafka-console-consumer --bootstrap-server localhost:9092 --topic carrinho  --property print.timestamp=true --property print.key=true --property print.value=true --property print.partition=true --from-beginning
 ```
-	
+
+#### Ir para o Proximo lab:
+
+8. [Criando ambiente Analytics - Presto ](presto/README.md)
