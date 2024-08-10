@@ -12,6 +12,7 @@
         "locale": "pt_BR",
         "timezone": "America/Sao_Paulo",
         "s3.region": "us-east-1",
-        "aws.access.key.id": "ib0KM2z3R6Nnr7tR3gZ5",
-        "aws.secret.access.key": "7isUhSitpJj9BRkwQpTOvgRIy6td1zR4SJYofAVM"
+        "aws.access.key.id": "cursolab",
+		"behavior.on.null.values": "ignore",
+        "aws.secret.access.key": "cursolab"
 }

@@ -38,7 +38,7 @@ http PUT http://localhost:8083/connectors/connector-postgres-produtos/config < c
 	
 
 //Ou via powershell
-$response = Invoke-WebRequest -Uri "http://localhost:8083/connectors/connector-postgres-produtos/config" -Method Put -Body (Get-Content -Path "connector-postgres-produtos.json" -Raw) -ContentType "application/json"; $response.Content
+$response = Invoke-WebRequest -Uri "http://localhost:8083/connectors/connector-postgres-produtos/config" -Method Put -Body (Get-Content -Path "conectores/conector-postgres-produto.json" -Raw) -ContentType "application/json"; $response.Content
 
 
 http  http://localhost:8083/connectors/connector-postgres-produtos/status

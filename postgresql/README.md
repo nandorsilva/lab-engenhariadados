@@ -47,7 +47,7 @@ Acessando para o PgAdmin http://localhost:5433/
 
 * Nome do server: postgres
 * Nome do Host Name: postgres
-* database: postgres
+* database: admin
 * Username: postgres
 * password: postgres
 

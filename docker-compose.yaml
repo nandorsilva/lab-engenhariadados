@@ -81,7 +81,7 @@ services:
 
   
   connect:
-        image: fernandos/kafka-connet-debezium-lab:v214
+        image: daniellab/kafka-connet-lab:v1
         container_name: kafkaConect
         ports:
         - 8083:8083
@@ -221,7 +221,7 @@ services:
     hostname: postgres
     
     build:
-      context: ./postgresql
+      context: ./api/postgres
       dockerfile: Dockerfile
     ports:   
       - "5435:5432"
@@ -246,7 +246,7 @@ services:
       volumes:
         - ./api:/home/app/api   
       environment:
-        - DATABASE_URL=postgresql+asyncpg://postgres:postgres@postgres:5432/postgres
+        - DATABASE_URL=postgresql+asyncpg://postgres:postgres@postgres:5432/admin
         - BOOSTRAP_SERVER_KAFKA=kafka-broker:29092
       stdin_open: true
       tty: true 
