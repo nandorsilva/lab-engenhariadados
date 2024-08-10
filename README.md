@@ -47,4 +47,3 @@ Sistema de E-commerce da Modas Consultorias: Exibe os produtos adicionados ao ca
 11. [Criando ambiente Analytics - Ingestão de Dados Externos com NIFI](nifi/README.md)
 12. [Analisando Dados com o metabase](metabase/README.md)
 
-![Lab](content/presto_metabase_kafka_fastapi_hive.mp4)
