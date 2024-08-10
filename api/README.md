@@ -41,4 +41,4 @@ kafka-console-consumer --bootstrap-server localhost:9092 --topic carrinho  --pro
 
 #### Ir para o Proximo lab:
 
-8. [Criando ambiente Analytics - Presto ](presto/README.md)
+8. [Criando ambiente Analytics - Presto ](../presto/README.md)
