@@ -7,9 +7,26 @@
 ## Pré-requisitos?
 * Docker
 * Docker-Compose
-* Serviços Hadoop e Hive 
+* Serviços Zookeeper
 
-## Open DBeaver
+
+
+
+> [!IMPORTANT]
+> Esse serviço pode demorar alguns minutos para subir, acompanhao logs.
+
+
+## Subindo o NIFI
+```bash
+docker compose up -d nifi
+```
+
+### Abrir  o NIFI - http://localhost:49090/nifi/
+[NIFI](http://localhost:49090/nifi/)
+
+
+
+
 New Database Connection - Apache Hive
 ![Lab](content/dbeaver_hive_1.png)
 
