@@ -21,93 +21,96 @@
 docker compose up -d nifi
 ```
 
-### Abrir  o NIFI - http://localhost:49090/nifi/
+### Abrir  o NIFI 
 [NIFI](http://localhost:49090/nifi/)
 
 
+### Tela inicial
+![Lab](content/nifi_1.png)
+
+### Criando grupo - Exemplo_aula
+Process Group 
+![Lab](content/nifi_2.png)
+
+### Criando fluxo de ingestão - Exemplo_aula
+Acessar grupo de processamento 
+![Lab](content/nifi_3.png)
+
+Criar o processador GetFile - Vai capturar o arquivo csv quando adicionado no diretório
+![Lab](content/nifi_4_1.png)
 
 
-New Database Connection - Apache Hive
-![Lab](content/dbeaver_hive_1.png)
+Selecionar processador GetFile
+![Lab](content/nifi_4_2.png)
 
-Preencha somente
-Hostname: localhost
-Port:10000
-![Lab](content/dbeaver_hive_2.png)
+Configurando processador acessando PROPERTIES
+* Input Directory: /util/incoming
+  * Criar path acima na raiz do projeto. 
 
-Faça o Test Connection no botão inferior esquerdo 
-![Lab](content/dbeaver_hive_3.png)
+![Lab](content/nifi_5.png)
 
-Abra um novo script conforme imagem abaixo
-![Lab](content/dbeaver_hive_4.png)
+Criar fluxo de escrita com o processador - PutS3Object
+![Lab](content/nifi_6.png)
 
 
+Criar fluxo de escrita com o processador - PutS3Object
+* Object Key: csv/black/${filename}
+* Bucket: raw
 
-## Criando database no Hive - raw_topics
+![Lab](content/nifi_6_1.png)
+
+O Fluxo deve ficar igual abaixo 
+**Adicionar o fluxo de falha au terminar no processador S3
+![Lab](content/nifi_7.png)
+
+
+
+
+> [!IMPORTANT]
+> Voltar para o dbeaver para executar realizar a criação das tabela externa referente ao CSV.
+
+## Criando database no Hive - raw_csv
 
 ```sql
-create database if not exists raw_topics location 's3a://system/schema'
+create database if not exists raw_csv;
 ``` 
 
 # Criando as External Tables
 
-### raw_topics.carrinho
+### raw_csv.blackfriday
 
 ```sql
-create external table if not exists raw_topics.carrinho(
-datacarrinho date, idproduto int, id int
+create external table if not exists raw_csv.blackfriday
+(
+User_ID int,
+Product_ID string,
+Gender string,
+Age string,
+Occupation int,
+City_Category string,
+Stay_In_Current_City_Years int,
+Marital_Status int,
+Product_Category_1 int,
+Product_Category_2 int,
+Product_Category_3 int,
+Purchase int
 )
-PARTITIONED BY (ano string, mes string, dia string)
-stored as jsonfile
-location 's3a://raw/topics/carrinho';
-```
-### Rodar o repair para criar as partições
-```sql
-msck repair table raw_topics.carrinho;
+row format delimited fields terminated by ','
+stored as textfile
+location 's3a://raw/csv/black'
+tblproperties ("skip.header.line.count"="1");
 ```
 
 
 
-## raw_topics.produtos
+
+## Testando a ingestão
 
 ```sql
-create external table if not exists raw_topics.produtos (
-	id bigint,
-	nome string,
-	valor float
-)
-PARTITIONED BY (ano string, mes string, dia string)
-stored as jsonfile
-location 's3a://raw/topics/postgres.dbfiafastapi.produtos';
-```
-### Rodar o repair para criar as partições
-```sql
-msck repair table raw_topics.produtos;
+select count(*) as total from raw_csv.blackfriday;
 ```
 
 
-## raw_topics.compra
-
-```sql
-create external table if not exists raw_topics.compra(
-	id bigint,
-	valortotal float
-)
-PARTITIONED BY (ano string, mes string, dia string)
-stored as jsonfile
-location 's3a://raw/topics/postgres.dbfiafastapi.compra';
-```
-### Rodar o repair para criar as partições
-```sql
-msck repair table raw_topics.compra;
-```
-
-## Rodar um select para testes:
-```sql
-select idproduto,count(*) as total from raw_topics.carrinho
-group by  idproduto
-order by 2 desc ;
-```
 
 
 
@@ -115,6 +118,6 @@ order by 2 desc ;
 
 #### Ir para o Proximo lab:
 
-10. [Criando ambiente Analytics - Ingestão de Dados Externos com NIFI](../nifi/README.md)
+11. [Analisando Dados com o metabase](../metabase/README.md)
 
 
