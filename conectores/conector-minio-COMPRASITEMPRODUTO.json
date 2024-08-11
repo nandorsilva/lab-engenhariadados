@@ -19,7 +19,7 @@
         "transforms": "ReplaceNulls",
         "transforms.ReplaceNulls.type": "org.apache.kafka.connect.transforms.ReplaceField$Value",
         "transforms.ReplaceNulls.null.replacement": "{}",
-        "aws.access.key.id": "ib0KM2z3R6Nnr7tR3gZ5",
-        "aws.secret.access.key": "7isUhSitpJj9BRkwQpTOvgRIy6td1zR4SJYofAVM"
+        "aws.access.key.id": "cursolab",
+        "aws.secret.access.key": "cursolab"
 
 }
