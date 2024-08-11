@@ -160,6 +160,7 @@ services:
           memory: 500m
     networks:
        otel:
+    #Se entrar em mode de segurança, acessar a vm e rodar o "hdfs dfsadmin -safemode leave" e depois "hdfs fsck -delete" 
 
        
   datanode:
@@ -235,6 +236,7 @@ services:
     command: postgres -c shared_preload_libraries=pg_stat_statements -c pg_stat_statements.track=all -c max_connections=200 -c wal_level=logical
     networks:
       otel:
+      
   api:
       image: fia_fastapi
       build:
