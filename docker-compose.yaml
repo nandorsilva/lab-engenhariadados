@@ -81,7 +81,7 @@ services:
 
   
   connect:
-        image: daniellab/kafka-connet-lab:v1
+        image: fernandos/kafka-connet-debezium-lab:v214
         container_name: kafkaConect
         ports:
         - 8083:8083
