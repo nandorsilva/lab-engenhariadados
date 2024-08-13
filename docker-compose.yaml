@@ -222,7 +222,7 @@ services:
     hostname: postgres
     
     build:
-      context: ./api/postgres
+      context: ./postgresql
       dockerfile: Dockerfile
     ports:   
       - "5435:5432"

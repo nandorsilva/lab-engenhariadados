@@ -80,6 +80,7 @@ docker exec -it kafkaConect curl http://localhost:8083/connectors/conector-minio
 Criando o conector `conector-minio-COMPRASITEMPRODUTO.json`
 
 
+
 ## AGORA É COM VOCÊ!
 
 7. [Criando APi, gerando evento para o carrinho ](../api/README.md)
