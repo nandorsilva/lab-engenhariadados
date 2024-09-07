@@ -39,3 +39,9 @@ CREATE TABLE  compraItens
    FOREIGN KEY (idproduto) REFERENCES produtos(id)
 );
 
+CREATE TABLE carrinhos
+(
+    id SERIAL  NOT NULL PRIMARY KEY,
+    idProduto integer NOT NULL,
+    dataCarrinho date NOT NULL   
+);
