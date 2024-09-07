@@ -14,5 +14,5 @@
         "transforms.unwrap.add.headers": "op",
         "value.converter.schemas.enable": "false",
         "database.history.kafka.topic": "schema-changes.compra",
-         "slot.name":"compra"
+        "slot.name":"compra"
 }

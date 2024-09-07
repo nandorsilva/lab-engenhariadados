@@ -45,3 +45,7 @@ docker exec -it kafkaConect curl  http://localhost:8083/connector-plugins
 5. [Criando nossa primeira transformação com KSql](../transformacao-ksql/README.md)
 6. [Criando ambiente MinIO e os Conectores Sink ](../minio/README.md)
 7. [Criando APi, gerando evento para o carrinho ](../api/README.md)
+8. [Criando ambiente Analytics - Presto ](../presto/README.md)
+9. [Criando ambiente Analytics - Criando External tables no Hive](../hive/README.md)
+11. [Criando ambiente Analytics - Ingestão de Dados Externos com NIFI](../nifi/README.md)
+12. [Analisando Dados com o metabase](../metabase/README.md)

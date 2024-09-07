@@ -17,7 +17,7 @@ Na pastinha PostegreSql tem o arquivo para a criação da estrutura inicial do b
 
 Observe o arquivo `Dockerfile` e veja que está sendo copiado o arquivo `db.sql` pra dentro da imagem em sua criação.
 
-Nesse arquivo crie a estrutura da tabela carrinho contendo os seguintes campos:
+Nesse arquivo crie a estrutura da tabela `carrinhos` contendo os seguintes campos:
 
 * id SERIAL  NOT NULL PRIMARY KEY
 * idProduto integer NOT NULL
@@ -74,4 +74,8 @@ Acessando para o PgAdmin http://localhost:5433/
 4. [Tópico Produto](../topico-produto//README.md)
 5. [Criando nossa primeira transformação com KSql](../transformacao-ksql/README.md)
 6. [Criando ambiente MinIO e os Conectores Sink ](../minio/README.md)
-7. [Criando APi, gerando evento para o carrinho ](../api/README.md)
+7. [Criando APi, gerando evento para o carrinho ]../(api/README.md)
+8. [Criando ambiente Analytics - Presto ](../presto/README.md)
+9. [Criando ambiente Analytics - Criando External tables no Hive](../hive/README.md)
+10. [Criando ambiente Analytics - Ingestão de Dados Externos com NIFI](../nifi/README.md)
+11. [Analisando Dados com o metabase](../metabase/README.md)

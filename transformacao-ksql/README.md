@@ -55,3 +55,7 @@ kafka-console-consumer --bootstrap-server localhost:9092 --topic COMPRASITEMPROD
 
 6. [Criando ambiente MinIO e os Conectores Sink ](../minio/README.md)
 7. [Criando APi, gerando evento para o carrinho ](../api/README.md)
+8. [Criando ambiente Analytics - Presto ](../presto/README.md)
+9. [Criando ambiente Analytics - Criando External tables no Hive](../hive/README.md)
+10. [Criando ambiente Analytics - Ingestão de Dados Externos com NIFI](../nifi/README.md)
+11. [Analisando Dados com o metabase](../metabase/README.md)

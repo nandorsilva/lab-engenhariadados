@@ -29,10 +29,10 @@ docker logs  fast-api-fia
 
 * http://localhost:8000/docs
 
-# No Arquivo `route/carrinho.py` podemos validar o id do produto, analisando se é válido.
-# No Arquivo `route/carrinho.py` podemos inserir uma compra.
+## No Arquivo `route/carrinho.py` podemos validar o id do produto, analisando se é válido.
+## No Arquivo `route/carrinho.py` podemos inserir uma compra.
 
-# Consumindo mensagens no kafka tópico carrinho
+## Consumindo mensagens no kafka tópico carrinho
 
 
 ```bash 
@@ -42,3 +42,6 @@ kafka-console-consumer --bootstrap-server localhost:9092 --topic carrinho  --pro
 #### Ir para o Proximo lab:
 
 8. [Criando ambiente Analytics - Presto ](../presto/README.md)
+9. [Criando ambiente Analytics - Criando External tables no Hive](../hive/README.md)
+10. [Criando ambiente Analytics - Ingestão de Dados Externos com NIFI](../nifi/README.md)
+11. [Analisando Dados com o metabase](../metabase/README.md)

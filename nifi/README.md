@@ -7,13 +7,11 @@
 ## Pré-requisitos?
 * Docker
 * Docker-Compose
-* Serviços Zookeeper
-
 
 
 
 > [!IMPORTANT]
-> Esse serviço pode demorar alguns minutos para subir, acompanhao logs.
+> Esse serviço pode demorar alguns minutos para subir, acompanha os logs.
 
 
 ## Subindo o NIFI
@@ -54,8 +52,12 @@ Criar fluxo de escrita com o processador - PutS3Object
 
 
 Criar fluxo de escrita com o processador - PutS3Object
+
 * Object Key: csv/black/${filename}
 * Bucket: raw
+* Endpoint Override URL: http://minio:9000
+* Access Key ID: cursolab
+* Secret Access Key: cursolab
 
 ![Lab](content/nifi_6_1.png)
 
@@ -63,6 +65,8 @@ O Fluxo deve ficar igual abaixo
 **Adicionar o fluxo de falha au terminar no processador S3
 ![Lab](content/nifi_7.png)
 
+
+Copie o arquivo `BlackFridayDataset2.txt` que está dentro da pasta `util`  e cola na pasta `nifi/util/incoming`
 
 
 
@@ -109,7 +113,6 @@ tblproperties ("skip.header.line.count"="1");
 ```sql
 select count(*) as total from raw_csv.blackfriday;
 ```
-
 
 
 
