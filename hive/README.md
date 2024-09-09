@@ -11,18 +11,18 @@
 
 ## Open DBeaver
 New Database Connection - Apache Hive
-![Lab](content/dbeaver_hive_1.png)
+![Lab](../content/dbeaver_hive_1.png)
 
 Preencha somente
 Hostname: localhost
 Port:10000
-![Lab](content/dbeaver_hive_2.png)
+![Lab](../content/dbeaver_hive_2.png)
 
 Faça o Test Connection no botão inferior esquerdo 
-![Lab](content/dbeaver_hive_3.png)
+![Lab](../content/dbeaver_hive_3.png)
 
 Abra um novo script conforme imagem abaixo
-![Lab](content/dbeaver_hive_4.png)
+![Lab](../content/dbeaver_hive_4.png)
 
 
 
