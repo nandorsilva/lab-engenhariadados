@@ -23,6 +23,23 @@ Nesse arquivo crie a estrutura da tabela `carrinhos` contendo os seguintes campo
 * idProduto integer NOT NULL
 * dataCarrinho date NOT NULL   
 
+
+> [!IMPORTANT]
+> Crie os arquivos nas pastas correspondentes
+
+
+```bash
+
+mkdir .\postgresql\volume\pg_notify
+mkdir .\postgresql\volume\pg_tblspc
+mkdir .\postgresql\volume\pg_twophase
+mkdir .\postgresql\volume\pg_stat
+mkdir .\postgresql\volume\pg_logical\mappings
+mkdir .\postgresql\volume\pg_commit_ts
+
+```
+
+
 Após a criação vamos subir os serviços do docker compose... Lembram!?!!?!?
 
 * postgres  
@@ -74,7 +91,7 @@ Acessando para o PgAdmin http://localhost:5433/
 4. [Tópico Produto](../topico-produto//README.md)
 5. [Criando nossa primeira transformação com KSql](../transformacao-ksql/README.md)
 6. [Criando ambiente MinIO e os Conectores Sink ](../minio/README.md)
-7. [Criando APi, gerando evento para o carrinho ]../(api/README.md)
+7. [Criando APi, gerando evento para o carrinho ](../api/README.md)
 8. [Criando ambiente Analytics - Presto ](../presto/README.md)
 9. [Criando ambiente Analytics - Criando External tables no Hive](../hive/README.md)
 10. [Criando ambiente Analytics - Ingestão de Dados Externos com NIFI](../nifi/README.md)
