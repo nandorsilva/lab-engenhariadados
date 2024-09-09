@@ -36,7 +36,7 @@ mkdir .\postgresql\volume\pg_twophase
 mkdir .\postgresql\volume\pg_stat
 mkdir .\postgresql\volume\pg_logical\mappings
 mkdir .\postgresql\volume\pg_commit_ts
-
+mkdir .\postgresql\volume\pg_snapshots
 ```
 
 

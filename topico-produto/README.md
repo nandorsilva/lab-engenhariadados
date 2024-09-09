@@ -63,11 +63,20 @@ kafka-console-consumer --bootstrap-server localhost:9092 --topic postgres.dbfiaf
 Insira alguns registros
 
 > [!IMPORTANT]
-> Na tabela `compraitens` insira produtos que já possuem na tabela `produtos`
+> Inserindo alguns itens
 
 
 ```sql
 INSERT INTO dbfiafastapi.produtos VALUES (default,'nome do produto',3.14);
+
+INSERT INTO dbfiafastapi.compra(
+	id, valortotal)
+	VALUES (default, 100);
+
+INSERT INTO dbfiafastapi.compraitens(
+	id, idproduto, valor, quantidade, idcompra)
+	VALUES (default, 101, 10, 1,  currval(pg_get_serial_sequence('dbfiafastapi.compra','id')));
+    
 ```	
 
 
