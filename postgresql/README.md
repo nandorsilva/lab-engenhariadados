@@ -78,7 +78,7 @@ Acessando para o PgAdmin http://localhost:5433/
 ### Configurando o server
 ![Exemplo Kafka Conect](../content/conect-pgadmin.png)
 
-### ...Se tudo deu certo o banco de exemplo com suas tabelas
+### ...Se tudo deu certo o banco admin com suas tabelas
 ![Exemplo Kafka Conect](../content/tabelas.png)
 
 > [!IMPORTANT]
