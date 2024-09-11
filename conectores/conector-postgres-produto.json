@@ -16,5 +16,5 @@
          "transforms.extractKey.type": "org.apache.kafka.connect.transforms.ExtractField$Key",
         "transforms.extractKey.field": "id",
         "database.history.kafka.topic": "schema-changes.produto",
-        "slot.name":"produto"
+        "slot.name":"produtos"
 }
