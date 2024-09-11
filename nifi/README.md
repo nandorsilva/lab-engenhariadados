@@ -24,33 +24,33 @@ docker compose up -d nifi
 
 
 ### Tela inicial
-![Lab](content/nifi_1.png)
+![Lab](../content/nifi_1.png)
 
 ### Criando grupo - Exemplo_aula
 Process Group 
-![Lab](content/nifi_2.png)
+![Lab](../content/nifi_2.png)
 
-![Lab](/content/nifi_8.png)
+![Lab](../content/nifi_8.png)
 
 ### Criando fluxo de ingestão - Exemplo_aula
 Acessar grupo de processamento 
-![Lab](content/nifi_3.png)
+![Lab](../content/nifi_3.png)
 
 Criar o processador GetFile - Vai capturar o arquivo csv quando adicionado no diretório
-![Lab](content/nifi_4_1.png)
+![Lab](../content/nifi_4_1.png)
 
 
 Selecionar processador GetFile
-![Lab](content/nifi_4_2.png)
+![Lab](../content/nifi_4_2.png)
 
 Configurando processador acessando PROPERTIES
 * Input Directory: /util/incoming
   * Criar path acima na raiz do projeto. 
 
-![Lab](content/nifi_5.png)
+![Lab](../content/nifi_5.png)
 
 Criar fluxo de escrita com o processador - PutS3Object
-![Lab](content/nifi_6.png)
+![Lab](../content/nifi_6.png)
 
 
 Criar fluxo de escrita com o processador - PutS3Object
@@ -61,11 +61,11 @@ Criar fluxo de escrita com o processador - PutS3Object
 * Access Key ID: cursolab
 * Secret Access Key: cursolab
 
-![Lab](content/nifi_6_1.png)
+![Lab](../content/nifi_6_1.png)
 
 O Fluxo deve ficar igual abaixo 
 **Adicionar o fluxo de falha au terminar no processador S3
-![Lab](content/nifi_7.png)
+![Lab](../content/nifi_7.png)
 
 
 Copie o arquivo `BlackFridayDataset2.txt` que está dentro da pasta `util`  e cola na pasta `nifi/util/incoming`

@@ -7,8 +7,6 @@
 ## Pré-requisitos?
 * Docker
 * Docker-Compose
-* postgres
-
 
 
 ## Subindo o Metabase
@@ -30,22 +28,22 @@ userlab@fiadatalab.com.br
 ```bash
 datalab
 ```
-![Lab](content/login_metabase.png)
+![Lab](../content/login_metabase.png)
 
 
 ### Tela inicial
 
-![Lab](content/tela_inicial.png)
+![Lab](../content/tela_inicial.png)
 
 
 
 ### Configurando o Presto
 
 Selecione a engranagem ao lado esquerdo da tela e depois click na opcção **Admin settings**:
-![Lab](content/config_metabase.png)
+![Lab](../content/config_metabase.png)
 
 
-Acesse a opção **Databases** e caso não tenha Database **Presto_HIVE** clicar **Add Database**   ![Lab](content/config_metabase_1.png)
+Acesse a opção **Databases** e caso não tenha Database **Presto_HIVE** clicar **Add Database**   ![Lab](../content/config_metabase_1.png)
 
 
 - Configuração
@@ -78,18 +76,18 @@ hive
 ```bash
 hive
 ```
-![Lab](content/config_metabase_2.png)
+![Lab](../content/config_metabase_2.png)
 
 - Após a configuração "Salvar" e sair da configuração Admin.
 
 
 Criando o dash utilizando X-Ray. Databases > Presto_HIVE > raw_topics
-![Lab](content/config_metabase_3.png)
+![Lab](../content/config_metabase_3.png)
 
 
 
 Na tabela Crrinho, clicar no raio para a criação do dsah proposto pelo próprio metabase e divirtan-se!
-![Lab](content/config_metabase_4.png)
+![Lab](../content/config_metabase_4.png)
 
 
 
