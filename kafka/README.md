@@ -20,6 +20,7 @@ docker-compose up -d zookeeper kafka-broker
 ```bash
 cd kafka
 docker image build -t <<usuario>>/kafka-connet-lab:v1  -f Dockerfile .
+cd ..
 ```
 
 

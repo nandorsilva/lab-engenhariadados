@@ -7,8 +7,6 @@
 ## Pré-requisitos?
 * Docker
 * Docker-Compose
-* Editor de códigos como VSCode, Sublime, Vim, Notepad++ e etc
-* Ter todos os conectores do Lab "Running", abaixo os camandos de verificação/criação:
 
 
 # Subindo o Hadoop
@@ -32,6 +30,8 @@ Se o resultado for `Safe mode is ON`, vamos mudar.
 hdfs dfsadmin -safemode leave
 
 hdfs fsck -delete
+
+exit
 ``` 
 
 

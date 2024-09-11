@@ -30,6 +30,8 @@ docker compose up -d nifi
 Process Group 
 ![Lab](content/nifi_2.png)
 
+![Lab](/content/nifi_8.png)
+
 ### Criando fluxo de ingestão - Exemplo_aula
 Acessar grupo de processamento 
 ![Lab](content/nifi_3.png)

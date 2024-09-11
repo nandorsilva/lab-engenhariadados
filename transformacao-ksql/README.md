@@ -11,6 +11,10 @@
 
 ### criando nosso KTable do tópico `postgres.dbfiafastapi.produtos`
 
+> [!IMPORTANT]
+> Não esqueça de sair do Container 
+
+
 ```bash
 
 docker-compose up -d  ksqldb-server ksqldb-cli 
@@ -22,7 +26,7 @@ SET 'auto.offset.reset'='earliest';
 create table produtosTable (id int primary key, nome varchar, valor double) with (KAFKA_TOPIC='postgres.dbfiafastapi.produtos', KEY_FORMAT = 'JSON', VALUE_FORMAT = 'JSON');
 ```
 
-### criando nosso KStream do tópico `postgres.dbfiafastapi.compraitens`
+### Criando nosso KStream do tópico `postgres.dbfiafastapi.compraitens`
 
 ```bash
 
@@ -30,7 +34,7 @@ create table produtosTable (id int primary key, nome varchar, valor double) with
  
 ```
 
-### Gerando um join entre Ktable `produtosTable` e KStream  `compraitens_stream`
+### Gerando  join entre Ktable `produtosTable` e KStream  `compraitens_stream`
 
 ```bash
 

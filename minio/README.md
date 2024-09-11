@@ -10,7 +10,7 @@
 
 
 
-### Antes de subir o MinIO, vamos criar o tópico carrinho que será produzido via api
+### Antes de subir o MinIO, vamos criar o tópico carrinho que será produzido mensagens via api
 ```bash
 
 docker exec -it kafka-broker /bin/bash
@@ -48,6 +48,9 @@ Acesso para o MinIO http://localhost:9001/login
 
 ### Configurando o MinIO
 
+> [!IMPORTANT]
+> Crie a camada Raw caso não tenha ainda
+
 
 ![MinIO](../content/minio-04.png)
 ![MinIO](../content/minio-05.png)
@@ -55,6 +58,8 @@ Acesso para o MinIO http://localhost:9001/login
 
 
 Instalando o conector do MinIO
+
+![MinIO](../content/minio-07.png)
 
 > [!IMPORTANT]
 > Os campos `aws.access.key.id` e `aws.secret.access.key` dos arquivos abaixo,  tem as chaves `cursolab` e `cursolab` que estão configuradas no arquivo `docker-compose.yaml`.
@@ -72,16 +77,18 @@ http PUT http://localhost:8083/connectors/conector-minio-carrinho/config < conec
 $response = Invoke-WebRequest -Uri "http://localhost:8083/connectors/conector-minio-carrinho/config" -Method Put -Body (Get-Content -Path "conectores/conector-minio-carrinho.json" -Raw) -ContentType "application/json"; $response.Content
 
 
-
 docker exec -it kafkaConect curl http://localhost:8083/connectors/conector-minio-carrinho/status
 
 ```
 
 ## Criando o conector `COMPRASITEMPRODUTO`
+## Criando o conector `Compra`
+## Criando o conector `Produto`
 
 
 Criando o conector `conector-minio-COMPRASITEMPRODUTO.json`
-
+Criando o conector `conector-minio-compra.json`
+Criando o conector `conector-minio-produto.json`
 
 
 ## AGORA É COM VOCÊ!

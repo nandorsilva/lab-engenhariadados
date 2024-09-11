@@ -15,6 +15,7 @@
 
 ```bash 
 
+//Excluindo o container caso esteja ativo 
 docker container rm  fast-api-fia -f
 
 docker compose up -d api
@@ -29,6 +30,8 @@ docker logs  fast-api-fia
 
 * http://localhost:8000/docs
 
+![FastApi](../content/api-fast-01.png)
+
 ## No Arquivo `route/carrinho.py` podemos validar o id do produto, analisando se é válido.
 ## No Arquivo `route/carrinho.py` podemos inserir uma compra.
 
@@ -36,6 +39,9 @@ docker logs  fast-api-fia
 
 
 ```bash 
+
+docker exec -it kafka-broker /bin/bash
+
 kafka-console-consumer --bootstrap-server localhost:9092 --topic carrinho  --property print.timestamp=true --property print.key=true --property print.value=true --property print.partition=true --from-beginning
 ```
 

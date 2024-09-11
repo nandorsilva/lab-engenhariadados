@@ -29,7 +29,7 @@ Abra um novo script conforme imagem abaixo
 ## Criando database no Hive - raw_topics
 
 ```sql
-create database if not exists raw_topics location 's3a://system/schema'
+create database if not exists raw_topics location 's3a://raw/topics'
 ``` 
 
 # Criando as External Tables
@@ -47,6 +47,9 @@ location 's3a://raw/topics/carrinho';
 ### Rodar o repair para criar as partições
 ```sql
 msck repair table raw_topics.carrinho;
+
+select * from  raw_topics.carrinho;
+
 ```
 
 
@@ -66,6 +69,9 @@ location 's3a://raw/topics/postgres.dbfiafastapi.produtos';
 ### Rodar o repair para criar as partições
 ```sql
 msck repair table raw_topics.produtos;
+
+select * from  raw_topics.produtos;
+
 ```
 
 
@@ -83,6 +89,9 @@ location 's3a://raw/topics/postgres.dbfiafastapi.compra';
 ### Rodar o repair para criar as partições
 ```sql
 msck repair table raw_topics.compra;
+
+select * from  raw_topics.compra;
+
 ```
 
 ## Rodar um select para testes:
