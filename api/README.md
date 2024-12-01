@@ -15,8 +15,9 @@
 
 ```bash 
 
-//Excluindo o container caso esteja ativo 
+//Excluindo a iamgem e o container caso esteja ativo 
 docker container rm  fast-api-fia -f
+docker image rm fia_fastapi 
 
 docker compose up -d api
 
@@ -32,8 +33,10 @@ docker logs  fast-api-fia
 
 ![FastApi](../content/api-fast-01.png)
 
-## No Arquivo `route/carrinho.py` podemos validar o id do produto, analisando se é válido.
-## No Arquivo `route/carrinho.py` podemos inserir uma compra.
+## Sugestões para implementar.
+
+### No Arquivo `route/carrinho.py` podemos validar o id do produto, analisando se é válido.
+### No Arquivo `route/carrinho.py` podemos inserir uma compra.
 
 ## Consumindo mensagens no kafka tópico carrinho
 

@@ -12,7 +12,7 @@
 ### criando nosso KTable do tópico `postgres.dbfiafastapi.produtos`
 
 > [!IMPORTANT]
-> Não esqueça de sair do Container 
+> Não esqueçam de sair do Container 
 
 
 ```bash

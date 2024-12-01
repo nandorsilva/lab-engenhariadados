@@ -62,14 +62,13 @@ kafka-console-consumer --bootstrap-server localhost:9092 --topic postgres.dbfiaf
 	
 ```
 
-Insira alguns registros
 
 > [!IMPORTANT]
 > Inserindo alguns itens
 
 
 ```sql
-INSERT INTO dbfiafastapi.produtos VALUES (default,'nome do produto',3.14);
+INSERT INTO dbfiafastapi.produtos VALUES (default,'lapis',3.14);
 
 INSERT INTO dbfiafastapi.compra(
 	id, valortotal)
@@ -77,7 +76,7 @@ INSERT INTO dbfiafastapi.compra(
 
 INSERT INTO dbfiafastapi.compraitens(
 	id, idproduto, valor, quantidade, idcompra)
-	VALUES (default, 101, 10, 1,  currval(pg_get_serial_sequence('dbfiafastapi.compra','id')));
+	VALUES (default, currval(pg_get_serial_sequence('dbfiafastapi.produtos','id')), 10, 1,  currval(pg_get_serial_sequence('dbfiafastapi.compra','id')));
     
 ```	
 
