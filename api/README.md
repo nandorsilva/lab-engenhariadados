@@ -33,11 +33,11 @@ docker logs  fast-api-fia
 
 ![FastApi](../content/api-fast-01.png)
 
-> [!IMPORTANT]
+> [!TIP]
 > ## Sugestões para implementar.
 
-No Arquivo `route/carrinho.py` podemos validar o id do produto, analisando se é válido.
-No Arquivo `route/carrinho.py` podemos inserir uma compra.
+<p>No Arquivo `route/carrinho.py` podemos validar o id do produto, analisando se é válido.</p>
+<p>No Arquivo `route/carrinho.py` podemos inserir uma compra.</p>
 
 ## Consumindo mensagens no kafka tópico carrinho
 
