@@ -13,16 +13,16 @@ Nosso tópico produto do kafka será do tipo Compact.
 
 Lembram pra que serve os tópicos do tipo Compact!!??
 
-```bash
+> [!IMPORTANT]
+> Entre no container caso ainda não esteja nele.
 
-//Entre no container caso ainda não esteja nele.
+```bash
 
 docker exec -it kafka-broker /bin/bash
 
 kafka-topics --create --topic postgres.dbfiafastapi.produtos --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 --config cleanup.policy=compact
 
 kafka-topics --bootstrap-server localhost:9092 --list 
-
 
 exit
 
@@ -35,20 +35,23 @@ exit
 No arquivo `conectores/conector-postgres-produto.json` ajuste o atributo `table.include.list` para informar o nome da tabela do postegreSQL que será feito a leitura dos dodos
 
 
-
+### Terminal Linux
 ```bash
 
-//Linux
-http PUT http://localhost:8083/connectors/connector-postgres-produtos/config < conectores/conector-postgres-produto.json
-	
-//Ou via powershell
+curl -X PUT -d @conectores/conector-postgres-produto.json http://localhost:8083/connectors/connector-postgres-produtos/config -H 'Content-Type: application/json' -H 'Accept: application/json'
+```
+
+### Terminal PowerShell
+```powershell
 $response = Invoke-WebRequest -Uri "http://localhost:8083/connectors/connector-postgres-produtos/config" -Method Put -Body (Get-Content -Path "conectores/conector-postgres-produto.json" -Raw) -ContentType "application/json"; $response.Content
 
-
-docker exec -it kafkaConect curl http://localhost:8083/connectors/connector-postgres-produtos/status
-
-
 ```
+
+
+```bash
+docker exec -it kafkaConect curl http://localhost:8083/connectors/connector-postgres-produtos/status
+```
+
 
 Deu certo?? Vamos consumir as mensagem da tabela protudo
 
