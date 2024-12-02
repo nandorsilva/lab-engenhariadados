@@ -108,5 +108,6 @@ order by 2 desc ;
 #### Ir para o Proximo lab:
 
 10. [Criando ambiente Analytics - Ingestão de Dados Externos com NIFI](../nifi/README.md)
+11. [Analisando Dados com o metabase](../metabase/README.md)
 
 
