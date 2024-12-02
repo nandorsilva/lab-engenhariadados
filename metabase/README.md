@@ -81,18 +81,11 @@ hive
 - Após a configuração "Salvar" e sair da configuração Admin.
 
 
-Criando o dash utilizando X-Ray. Databases > Presto_HIVE > raw_topics
+### Criando o dash utilizando X-Ray. Databases > Presto_HIVE > raw_topics
+
 ![Lab](../content/config_metabase_3.png)
 
 
 
-Na tabela Crrinho, clicar no raio para a criação do dsah proposto pelo próprio metabase e divirtan-se!
+### Na tabela Crrinho, clicar no raio para a criação do dsah proposto pelo próprio metabase e divirtan-se!
 ![Lab](../content/config_metabase_4.png)
-
-
-
-
-
-
-
-
