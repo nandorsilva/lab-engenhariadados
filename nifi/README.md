@@ -116,11 +116,6 @@ tblproperties ("skip.header.line.count"="1");
 select count(*) as total from raw_csv.blackfriday;
 ```
 
-
-
-
-
-
 #### Ir para o Proximo lab:
 
 11. [Analisando Dados com o metabase](../metabase/README.md)

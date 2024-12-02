@@ -25,7 +25,7 @@ Nesse arquivo crie a estrutura da tabela `carrinhos` contendo os seguintes campo
 
 
 > [!IMPORTANT]
-> Crie os arquivos nas pastas correspondentes
+> Criando as pastas para o container PostGreSql
 
 
 ```bash
@@ -40,7 +40,7 @@ mkdir ./postgresql/volume/pg_snapshots
 ```
 
 
-Após a criação vamos subir os serviços do docker compose... Lembram!?!!?!?
+Após a criação das pastas vamos subir os serviços do docker compose... Lembram!?!!?!?
 
 * postgres  
 * pgadmin
@@ -50,7 +50,6 @@ Após a criação vamos subir os serviços do docker compose... Lembram!?!!?!?
 docker-compose up -d postgres  pgadmin 
 
 docker container ls
-
 ```
 
 ### Conectando o banco PostgreSql com a ferramenta PgAdmin
@@ -79,7 +78,11 @@ Acessando para o PgAdmin http://localhost:5433/
 ![Exemplo Kafka Conect](../content/conect-pgadmin.png)
 
 ### ...Se tudo deu certo o banco admin com suas tabelas
-![Exemplo Kafka Conect](../content/tabelas.png)
+| Banco | Tabela |
+| --- | --- |
+|![Exemplo Kafka Conect](../content/tabelas-0.png.png) | ![Exemplo Kafka Conect](../content/tabelas.png) |
+
+
 
 > [!IMPORTANT]
 > Navegam entre as tabelas, façam alguns selects
