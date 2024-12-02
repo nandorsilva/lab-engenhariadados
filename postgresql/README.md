@@ -80,7 +80,7 @@ Acessando para o PgAdmin http://localhost:5433/
 ### ...Se tudo deu certo o banco admin com suas tabelas
 | Banco | Tabela |
 | --- | --- |
-|![Exemplo Kafka Conect](../content/tabelas-0.png.png) | ![Exemplo Kafka Conect](../content/tabelas.png) |
+|![Exemplo Kafka Conect](../content/tabelas-0.png) | ![Exemplo Kafka Conect](../content/tabelas.png) |
 
 
 
