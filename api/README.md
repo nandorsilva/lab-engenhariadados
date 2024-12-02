@@ -4,7 +4,7 @@
 
 ---
 
-## Pré-requisitos?
+## 💻 Pré-requisitos
 * Docker
 * Docker-Compose
 * Editor de códigos como VSCode, Sublime, Vim

@@ -4,7 +4,7 @@
 > **As configurações dos Laboratórios é puramente para fins de desenvolvimento local e estudos**
 
 
-## Pré-requisitos?
+## 💻 Pré-requisitos
 * Docker
 * Docker-Compose
 

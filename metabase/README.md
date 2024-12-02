@@ -4,7 +4,7 @@
 
 ---
 
-## Pré-requisitos?
+## 💻 Pré-requisitos
 * Docker
 * Docker-Compose
 
