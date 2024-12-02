@@ -69,17 +69,25 @@ Instalando o conector do MinIO
 
 Criando o conector `conector-minio-carrinho.json`
 
+### Terminal Linux
+
 ```bash
-http PUT http://localhost:8083/connectors/conector-minio-carrinho/config < conectores/conector-minio-carrinho.json
 
+curl -X PUT -d @conectores/conector-minio-carrinho.json http://localhost:8083/connectors/conector-minio-carrinho/config -H 'Content-Type: application/json' -H 'Accept: application/json'
+```
 
-//Ou via powershell
+### Terminal PowerShell
+```powershell
+
 $response = Invoke-WebRequest -Uri "http://localhost:8083/connectors/conector-minio-carrinho/config" -Method Put -Body (Get-Content -Path "conectores/conector-minio-carrinho.json" -Raw) -ContentType "application/json"; $response.Content
 
-
-docker exec -it kafkaConect curl http://localhost:8083/connectors/conector-minio-carrinho/status
-
 ```
+
+```bash
+docker exec -it kafkaConect curl http://localhost:8083/connectors/conector-minio-carrinho/status
+```
+
+
 
 ## Criando o conector `COMPRASITEMPRODUTO`
 ## Criando o conector `Compra`
