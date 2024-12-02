@@ -50,7 +50,8 @@ kafka-topics --bootstrap-server localhost:9092 --list
 
 
 > [!IMPORTANT]
-> Inserindo alguns registros nas tabelas compra e compra itens
+> Inserindo alguns registros nas tabelas compra e compra itens no PostegreSql 
+> http://localhost:5433/browser/
 
 
 ```sql
