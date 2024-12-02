@@ -18,15 +18,18 @@ https://docs.confluent.io/platform/current/connect/references/restapi.html
 
 No arquivo `conector-postgres.json` onde está o conector verifique os dados de login e senha, se estiver em branco, pegue-o no arquivo `docker-compose.yaml` serviço postgres e preencha com os valores.
 
+
+### Terminal Linux
 ```bash
 
-//Linux
+curl -X PUT -d @conectores/conector-postgres.json http://localhost:8083/connectors/connector-postgres/config -H 'Content-Type: application/json' -H 'Accept: application/json'
 
-http PUT http://localhost:8083/connectors/connector-postgres/config < conectores/conector-postgres.json
+```
 
-//Ou via powershell
+### Terminal PowerShell
+```powershell
+
 $response = Invoke-WebRequest -Uri "http://localhost:8083/connectors/connector-postgres/config" -Method Put -Body (Get-Content -Path "conectores/conector-postgres.json" -Raw) -ContentType "application/json"; $response.Content
-
 
 ```
 
