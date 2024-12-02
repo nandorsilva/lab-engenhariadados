@@ -13,9 +13,11 @@
 
 ## Subindo o API
 
+> [!Note]
+> ## Excluindo a iamgem e o container caso esteja ativo.
+
 ```bash 
 
-//Excluindo a iamgem e o container caso esteja ativo 
 docker container rm  fast-api-fia -f
 docker image rm fia_fastapi 
 
