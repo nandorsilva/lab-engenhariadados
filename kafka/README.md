@@ -28,6 +28,9 @@ docker image build -t <<usuario>>/kafka-connet-lab:v1  -f kafka/Dockerfile .
 
 ## No arquivo `docker-compose.yaml`, altere o serviço connect para a imagem que acabou de criar.
 
+![DockerCompose](../content/kafka-connect-image.png)
+
+
 
 ```bash
 docker-compose up -d akhq connect
