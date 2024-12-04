@@ -20,8 +20,6 @@ docker compose up -d nifi
 ```
 
 ## Abrir  o NIFI em http://localhost:49090/nifi/
-[NIFI](http://localhost:49090/nifi/)
-
 
 ## Tela inicial
 ![Lab](../content/nifi_1.png)
@@ -67,11 +65,11 @@ docker compose up -d nifi
 
 > [!IMPORTANT]
 > Adicionar o fluxo de falha au terminar no processador S3
+
 ![Lab](../content/nifi_7.png)
 
 
 Copie o arquivo `BlackFridayDataset2.txt` que está dentro da pasta `util`  e cola na pasta `nifi/util/incoming`
-
 
 
 > [!IMPORTANT]

@@ -14,7 +14,7 @@
 docker-compose up -d metabase
 ```
 
-### Abrir o Metabase
+### Abrindo o Metabase
 Abra aqui o [Metabase](http://localhost:3000/)
 
 
@@ -37,7 +37,7 @@ datalab
 
 
 
-### Configurando o Presto
+### Analisando o Presto
 
 Selecione a engranagem ao lado esquerdo da tela e depois click na opcção **Admin settings**:
 ![Lab](../content/config_metabase.png)
@@ -77,8 +77,6 @@ hive
 hive
 ```
 ![Lab](../content/config_metabase_2.png)
-
-- Após a configuração "Salvar" e sair da configuração Admin.
 
 
 ### Criando o dash utilizando X-Ray. Databases > Presto_HIVE > raw_topics
