@@ -30,7 +30,7 @@ exit
 
 
 
-### Vamos criar conector para ler os dados da tabela Produto e produzir mensagens no kafka
+### Desenvolveremos um conector para extrair dados da tabela Produto e publicar mensagens no Kafka de forma eficiente.
 
 No arquivo `conectores/conector-postgres-produto.json` ajuste o atributo `table.include.list` para informar o nome da tabela do postegreSQL que será feito a leitura dos dodos
 
@@ -53,7 +53,7 @@ docker exec -it kafkaConect curl http://localhost:8083/connectors/connector-post
 ```
 
 
-Deu certo?? Vamos consumir as mensagem da tabela protudo
+Deu certo?? Vamos consumir as mensagens da tabela produto
 
 ```bash
 
@@ -66,8 +66,8 @@ kafka-console-consumer --bootstrap-server localhost:9092 --topic postgres.dbfiaf
 ```
 
 
-> [!IMPORTANT]
-> Inserindo alguns itens
+> [!Note]
+> Inserindo alguns itens nas tabelas abaixo pelo PgAdmin
 
 
 ```sql
