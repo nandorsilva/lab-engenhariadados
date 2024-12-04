@@ -37,7 +37,7 @@ docker-compose up -d akhq connect
 ```
 
 
-Listando os plugins existentes, os padrões da imagem e do debezium que foram inseridos na imagem, via arquivo `Dockerfile`
+Ao listar os plugins existentes, serão exibidos tanto os padrões da imagem quanto os plugins do Debezium que foram adicionados à imagem por meio do arquivo `Dockerfile`
 
 ```bash
 docker exec -it kafkaConect curl  http://localhost:8083/connector-plugins
