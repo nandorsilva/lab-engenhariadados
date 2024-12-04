@@ -36,6 +36,11 @@ kafka-console-producer --bootstrap-server localhost:9092 --topic carrinho
 docker-compose up -d  minio
 ```
 
+> [!Note]
+> Observe o arquivo `docker-compose.yaml` o serviço `minio` o `command`.
+
+
+
 ### Configurando MinIO
 
 
@@ -57,8 +62,6 @@ Acesso para o MinIO http://localhost:9001/login
 ![MinIO](../content/minio-06.png)
 
 
-Instalando o conector do MinIO
-
 ![MinIO](../content/minio-07.png)
 
 > [!IMPORTANT]
@@ -66,6 +69,8 @@ Instalando o conector do MinIO
 
  * `conector-minio-carrinho.json`
  * `conector-minio-COMPRASITEMPRODUTO.json `
+
+Instalando o conector do MinIO
 
 Criando o conector `conector-minio-carrinho.json`
 
@@ -87,19 +92,13 @@ $response = Invoke-WebRequest -Uri "http://localhost:8083/connectors/conector-mi
 docker exec -it kafkaConect curl http://localhost:8083/connectors/conector-minio-carrinho/status
 ```
 
+# Agora é com vocês!!!!!
+
+## Criando o conector `conector-minio-COMPRASITEMPRODUTO.json`
+## Criando o conector `conector-minio-compra.json`
+## Criando o conector `conector-minio-produto.json`
 
 
-## Criando o conector `COMPRASITEMPRODUTO`
-## Criando o conector `Compra`
-## Criando o conector `Produto`
-
-
-Criando o conector `conector-minio-COMPRASITEMPRODUTO.json`
-Criando o conector `conector-minio-compra.json`
-Criando o conector `conector-minio-produto.json`
-
-
-## AGORA É COM VOCÊ!
 
 7. [Criando APi, gerando evento para o carrinho ](../api/README.md)
 8. [Criando ambiente Analytics - Presto ](../presto/README.md)
