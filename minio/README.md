@@ -100,7 +100,7 @@ docker exec -it kafkaConect curl http://localhost:8083/connectors/conector-minio
 
 
 
-7. [Criando APi, gerando evento para o carrinho ](../api/README.md)
+7. [Criando Api, gerando evento para o carrinho ](../api/README.md)
 8. [Criando ambiente Analytics - Presto ](../presto/README.md)
 9. [Criando ambiente Analytics - Criando External tables no Hive](../hive/README.md)
 10. [Criando ambiente Analytics - Ingestão de Dados Externos com NIFI](../nifi/README.md)
