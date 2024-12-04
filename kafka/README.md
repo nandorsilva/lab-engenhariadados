@@ -17,6 +17,10 @@ docker-compose up -d zookeeper kafka-broker
 
 ### Vamos configurar nosso cluster de Kafka Connect ??
 
+> [!IMPORTANT]
+> Trocar a informação  `<<usuario>>` para o seu do DockerHub, e o nome `kafka-connet-lab:v1`, pode ser alterado caso prefira.
+
+
 ```bash
 docker image build -t <<usuario>>/kafka-connet-lab:v1  -f kafka/Dockerfile .
 ```
