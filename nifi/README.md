@@ -64,7 +64,7 @@ docker compose up -d nifi
 ### O Fluxo deve ficar igual abaixo 
 
 > [!IMPORTANT]
-> Adicionar o fluxo de falha au terminar no processador S3
+> Adicionar os fluxos de falha/sucesso ao terminar no processador S3
 
 ![Lab](../content/nifi_7.png)
 
